@@ -38,7 +38,7 @@ names(mergedX) <- c("subject","activityLabel", as.character(vars[filterdColumns,
 
 # 5. Creates a second, independent tidy data set 
 #     with the average of each variable for each activity and each subject. 
-
+require(plyr)
 tidy <- ddply(mergedX[,3:length(mergedX)], .(mergedX$subject, mergedX$activityLabel), colMeans)
 rownames(tidy) <- paste("person",tidy[,1], tidy[,2], sep="_")
 tidy <- tidy[,3:ncol(tidy)]
